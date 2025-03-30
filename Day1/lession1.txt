@@ -1,0 +1,19 @@
+
+
+🚀 **Day 1 of My 30-Day SQL Challenge!** 🚀  
+
+Today, I officially started my **SQL learning journey** with the **30-day SQL Micro Course**! 🎯  
+
+**What I learned today:**  
+✅ Introduction to SQL and its importance in database management 📊  
+✅ Different editions of SQL Server and their use cases 🔍  
+✅ Step-by-step installation of SQL Server and SSMS 💻  
+✅ Setting up a local database environment for practice 🛠️  
+
+Excited to build a strong foundation in SQL and apply these skills to data analytics. Looking forward to the next lessons! 📚  
+
+A big thank you to **Satish Dhawale** and **SkillCourse E-learning Platform** for this structured learning experience!  
+
+If you're also learning SQL, let’s connect and grow together! 🚀  
+
+#SQL #Day1 #LearningSQL #DataAnalytics #SkillDevelopment #30DayChallenge
