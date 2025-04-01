@@ -68,6 +68,7 @@ where matches_played > 3
 order by matches_played desc
 limit 3;
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 *** Problem no: 2 ***
 
@@ -90,7 +91,7 @@ grade	CHAR(1)
 Query2:
 select distinct course_id from student_grades;
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 *** Problem no: 3 ***
 
@@ -141,6 +142,446 @@ select username,full_name,headline as achievements from profile
 order by username 
 limit 2;
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+*** Problem 4 *****
+
+Sales Dept Salaries - MySQL
+
+Find employees in the sales department who reached a target of more than 150. Output the first names of employees. Sort records by the first name in descending order. DataFrame/SQL Table with the following schema -
+Tables Schema as Below:
+employee
+columnName	dataType
+id	int64
+first_name	object
+last_name	object
+age	int64
+sex	object
+employee_title	object
+department	object
+salary	int64
+target	int64
+bonus	int64
+email	object
+city	object
+address	object
+manager_id	int64
+Output
+The columns to be returned is : first_name
+Example
+Sample Input:
+
+Table: employee
++----+------------+-----------+-----+-----+----------------+-------------+--------+--------+-------+-------------------+-------------+----------------------+------------+
+| id | first_name | last_name | age | sex | employee_title | department  | salary | target | bonus | email             | city        | address              | manager_id |
++----+------------+-----------+-----+-----+----------------+-------------+--------+--------+-------+-------------------+-------------+----------------------+------------+
+| 5  | Max        | George    | 26  | M   | Sales          | Sales       | 1300   | 200    | 150   | Max@company.com   | California  | 2638 Richards Avenue | 1          |
+| 13 | Katty      | Bond      | 56  | F   | Manager        | Management  | 150000 | 0      | 300   | Katty@company.com | Arizona     | None                 | 1          |
+| 11 | Richerd    | Gear      | 57  | M   | Manager        | Management  | 250000 | 0      | 300   | Richerd@company.com | Alabama    | None                 | 1          |
+| 10 | Jennifer   | Dion      | 34  | F   | Sales          | Sales       | 1000   | 200    | 150   | Jennifer@company.com | Alabama   | None                 | 13         |
+| 19 | George     | Joe       | 50  | M   | Manager        | Management  | 100000 | 0      | 300   | George@company.com | Florida    | 1003 Wyatt Street    | 1          |
++----+------------+-----------+-----+-----+----------------+-------------+--------+--------+-------+-------------------+-------------+----------------------+------------+
 
 
+Sample Output:
 
++------------+
+| first_name |
++------------+
+| Max        |
+| Jennifer   |
++------------+
+
+
+Explanation:
+
+The output filters the employees in the Sales department who have reached a target greater than 150. 
+After applying this filter, only Max and Jennifer meet the criteria. The results are sorted by their first names in descending order.
+
+Employees with bonuses. - MySQL
+
+Find employees whose bonuses are less than 150. Output the first name along with the corresponding bonus. DataFrame/SQL Table with the following schema -
+Tables Schema as Below:
+employee
+columnName	dataType
+id	int64
+first_name	object
+last_name	object
+age	int64
+sex	object
+employee_title	object
+department	object
+salary	int64
+target	int64
+bonus	int64
+email	object
+city	object
+address	object
+manager_id	int64
+Output
+The columns to be returned are:
+first_name, bonus
+Example
+Sample Input:
+
+Table: employee
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+| id | first_name | last_name | age | sex | employee_title | department | salary | target | bonus | email             | city       | address               | manager_id |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+| 6  | Molly      | Sam       | 28  | F   | Sales          | Sales      | 1400   | 100    | 150   | Molly@company.com | Arizona    | 3632 Polk Street     | 13         |
+| 7  | Nicky      | Bat       | 33  | F   | Sales          | Sales      | 1400   | 400    | 100   | Molly@company.com | Arizona    | 3461 Preston Street  | 13         |
+| 9  | Monika     | William   | 33  | F   | Sales          | Sales      | 1000   | 200    | 100   | Molly@company.com | Alabama    | None                 | 13         |
+| 17 | Mick       | Berry     | 44  | M   | Senior Sales   | Sales      | 2200   | 200    | 150   | Mick@company.com  | Florida    | None                 | 11         |
+| 12 | Shandler   | Bing      | 23  | M   | Auditor        | Audit      | 1100   | 200    | 150   | Shandler@company.com | Arizona | None                 | 11         |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+
+
+Sample Output:
+
++------------+-------+
+| first_name | bonus |
++------------+-------+
+| Nicky      | 100   |
+| Monika     | 100   |
++------------+-------+
+
+
+Explanation:
+
+The solution identifies employees whose bonuses are less than 150 by filtering the 'bonus' column in the employee table. It selects the first name and bonus of those employees who meet this condition. In this case, the employees with bonuses less than 150 are Nicky (bonus 100) and Monika (bonus 100). Thus, the output will display their first names and corresponding bonuses.
+
+
+Query4:
+select first_name from employee
+where department = 'sales' and target > 150
+order by first_name desc;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+*** Problem 5 ****
+
+Employees with bonuses. - MySQL
+
+Find employees whose bonuses are less than 150. Output the first name along with the corresponding bonus. DataFrame/SQL Table with the following schema -
+Tables Schema as Below:
+employee
+columnName	dataType
+id	int64
+first_name	object
+last_name	object
+age	int64
+sex	object
+employee_title	object
+department	object
+salary	int64
+target	int64
+bonus	int64
+email	object
+city	object
+address	object
+manager_id	int64
+Output
+The columns to be returned are:
+first_name, bonus
+Example
+Sample Input:
+
+Table: employee
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+| id | first_name | last_name | age | sex | employee_title | department | salary | target | bonus | email             | city       | address               | manager_id |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+| 6  | Molly      | Sam       | 28  | F   | Sales          | Sales      | 1400   | 100    | 150   | Molly@company.com | Arizona    | 3632 Polk Street     | 13         |
+| 7  | Nicky      | Bat       | 33  | F   | Sales          | Sales      | 1400   | 400    | 100   | Molly@company.com | Arizona    | 3461 Preston Street  | 13         |
+| 9  | Monika     | William   | 33  | F   | Sales          | Sales      | 1000   | 200    | 100   | Molly@company.com | Alabama    | None                 | 13         |
+| 17 | Mick       | Berry     | 44  | M   | Senior Sales   | Sales      | 2200   | 200    | 150   | Mick@company.com  | Florida    | None                 | 11         |
+| 12 | Shandler   | Bing      | 23  | M   | Auditor        | Audit      | 1100   | 200    | 150   | Shandler@company.com | Arizona | None                 | 11         |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+-------------------+------------+-----------------------+------------+
+
+
+Sample Output:
+
++------------+-------+
+| first_name | bonus |
++------------+-------+
+| Nicky      | 100   |
+| Monika     | 100   |
++------------+-------+
+
+
+Explanation:
+
+The solution identifies employees whose bonuses are less than 150 by filtering the 'bonus' column in the employee table. It selects the first name and bonus of those employees who meet this condition. In this case, the employees with bonuses less than 150 are Nicky (bonus 100) and Monika (bonus 100). Thus, the output will display their first names and corresponding bonuses.
+
+Query5:
+select first_name,bonus  from employee
+where bonus < 150;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+** Problem 6 ****
+Departments With 5 Employees. - MySQL
+
+Find departments with at least five employees. Print department. DataFrame/SQL Table with the following schema -
+Tables Schema as Below:
+employee
+columnName	dataType
+id	int64
+first_name	object
+last_name	object
+age	int64
+sex	object
+employee_title	object
+department	object
+salary	int64
+target	int64
+bonus	int64
+email	object
+city	object
+address	object
+manager_id	int64
+Output
+The column to be returned is:
+department
+Example
+Sample Input:
+
+Table: employee
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+--------------------+----------+------------------------+-------------+
+| id | first_name | last_name | age | sex | employee_title | department | salary | target | bonus | email              | city     | address                | manager_id  |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+--------------------+----------+------------------------+-------------+
+| 16 | Celine     | Anston    | 27  | F   | Auditor        | Audit      | 1000   | 200    | 150   | Celine@company.com | Colorado | None                   | 11          |
+| 15 | Michale    | Jackson   | 44  | F   | Auditor        | Audit      | 700    | 150    | 150   | Michale@company.com| Colorado | None                   | 11          |
+| 24 | Adam       | Morris    | 30  | M   | Sales          | Sales      | 1300   | 200    | 100   | Adam@company.com   | Alabama  | 4541 Ferry Street      | 19          |
+| 30 | Mark       | Jon       | 28  | M   | Sales          | Sales      | 1200   | 200    | 150   | Mark@company.com   | Alabama  | 2522 George Avenue     | 1           |
+| 8  | John       | Ford      | 26  | M   | Senior Sales   | Sales      | 1500   | 140    | 100   | Molly@company.com  | Alabama  | 4832 New Creek Road    | 13          |
+| 1  | Allen      | Wang      | 55  | F   | Manager        | Management | 200000 | 0      | 300   | Allen@company.com  | California| 1069 Ventura Drive    | 1           |
+| 2  | Joe        | Jack      | 32  | M   | Sales          | Sales      | 1000   | 200    | 150   | Joe@company.com    | California| 995 Jim Rosa Lane     | 1           |
+| 3  | Henry      | Ted       | 31  | M   | Senior Sales   | Sales      | 2000   | 200    | 150   | Henry@company.com  | California| 1609 Ford Street      | 1           |
++----+------------+-----------+-----+-----+----------------+------------+--------+--------+-------+--------------------+----------+------------------------+-------------+
+
+Sample Output:
++-----------+
+| department|
++-----------+
+| Sales     |
++-----------+
+
+Explanation:
+
+The task is to identify departments with at least five employees. This can be achieved by grouping employees based on their department and counting how many employees belong to each department. Then, the query filters out those departments that have fewer than five employees, returning only those with five or more.
+
+Query6:
+select department from employee
+group by department
+having count(*) >= 5;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+*** Problem 7 ****
+
+Find the maximum step for each feature. - MySQL
+
+Determine the maximum steps that can be reached for each feature. The output should include the feature ID and its corresponding maximum step.DataFrame/SQL Table with the following schema -
+Tables Schema as Below:
+facebook_product_features_realizations
+columnName	dataType
+feature_id	int64
+user_id	int64
+step_reached	int64
+timestamp	datetime64[ns]
+Output
+The columns to be returned are:
+feature_id, max_step_reached
+Example
+Sample Input:
+
+Table: feature_progress
+  
++------------+---------+-------------+---------------------+  
+| feature_id | user_id | step_reached|      timestamp      |  
++------------+---------+-------------+---------------------+  
+|     0      |    2    |      1      | 2019-03-11 10:01:00 |  
+|     0      |    2    |      2      | 2019-03-11 10:04:00 |  
+|     0      |    2    |      3      | 2019-03-11 10:09:00 |  
+|     1      |    3    |      6      | 2019-04-05 08:08:08 |  
+|     1      |    2    |      7      | 2019-04-05 11:12:13 |  
++------------+---------+-------------+---------------------+  
+
+Sample Output:
++------------+------------------+  
+| feature_id | max_step_reached |  
++------------+------------------+  
+|     0      |        3         |  
+|     1      |        7         |  
++------------+------------------+  
+
+Explanation:
+Identify the highest step reached for each feature by grouping the 
+data based on feature ID and selecting the maximum step value from the available records.  
+
+Query7:
+select feature_id,max(step_reached) as max_step_reached 
+from facebook_product_features_realizations
+group by feature_id;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+**** problem 8 ******
+Users scroll up events - MySQL
+
+Retrieve a list of distinct user IDs from the facebook_web_log table where at least one 'scroll_up' event is recorded. -
+Tables Schema as Below:
+facebook_web_log
+columnName	dataType
+user_id	int64
+timestamp	datetime64[ns]
+action	object
+Output
+The column to be returned is:
+user_id
+Example
+Sample Input:
+
+Table: facebook_web_log
++---------+---------------------+-------------+
+| user_id | timestamp           | action      |
++---------+---------------------+-------------+
+| 0       | 2019-04-25 13:30:45 | scroll_up   |
+| 0       | 2019-04-25 13:31:10 | scroll_down |
+| 1       | 2019-04-25 13:40:00 | page_load   |
+| 1       | 2019-04-26 11:15:25 | scroll_up   |
+| 2       | 2019-04-25 13:41:40 | scroll_up   |
+| 2       | 2019-04-25 13:41:35 | scroll_down |
++---------+---------------------+-------------+
+
+Sample Output:
++---------+
+| user_id |
++---------+
+| 0       |
+| 1       |
+| 2       |
++---------+
+
+Explanation:
+
+This extracts unique user_id values from facebook_web_log where the action is scroll_up. It filters the data to include only relevant entries, removes duplicates, and returns a single-column table of distinct users who performed the action.
+
+Query8:
+select distinct user_id from facebook_web_log
+where action = 'scroll_up';
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+*** Problem 9 ****
+My SQL-Salary by Education
+
+Calculate the average salary for different education levels and display it for each distinct education level.
+SQL Table with the following schema - 
+
+Tables Schema as Below:
+google_salaries
+columnName	dataType
+id	int64
+first_name	object
+last_name	object
+department	object
+education	object
+salary	int64
+Output
+The columns to be returned are:
+education, avg_salary
+Example
+Sample Input:
+
+Table: employee_details
++-----+-----------+-----------+--------------+-----------+--------+
+| id  | first_name| last_name | department   | education | salary |
++-----+-----------+-----------+--------------+-----------+--------+
+| 376 | Gary      | Stokes    | Accounting   | Master    | 56760  |
+| 377 | Lorenzo   | Cortez    | Accounting   | Doctorate | 74127  |
+| 378 | Roberta   | McGee     | Administration | Primary | 23987  |
+| 379 | Myrtle    | Munoz     | Administration | Primary | 31079  |
+| 380 | Molly     | Walker    | Administration | Primary | 20725  |
++-----+-----------+-----------+--------------+-----------+--------+
+
+Sample Output:
++-----------+--------------+
+| education | avg_salary   |
++-----------+--------------+
+| Master    | 56760.0000   |
+| Doctorate | 74127.0000   |
+| Primary   | 25263.6667   |
++-----------+--------------+
+
+Explanation:
+
+The table is analyzed to find unique education levels, and the average salary for each level is calculated, with results displayed alongside the education levels.
+
+Query9:
+select distinct education,avg(salary) as avg_salary
+from google_salaries
+group by education;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**** problem  10 *****
+My SQL - Call Declines
+
+Find the user_id whose status is inactive and company id is 1.
+SQL Table with the following schema
+
+Tables Schema as Below:
+
+rc_calls
+columnName	dataType
+user_id	int64
+date	datetime64[ns]
+call_id	int64
+rc_users
+columnName	dataType
+user_id	int64
+status	object
+company_id	int64
+Output
+The column to be returned is:
+user_id
+Example
+Sample Input:
+
+Table: rc_users
++---------+---------+------------+
+| user_id | status  | company_id |
++---------+---------+------------+
+| 1218    | free    | 1          |
+| 1554    | inactive| 1          |
+| 1857    | free    | 2          |
+| 1525    | paid    | 1          |
++---------+---------+------------+
+
+Sample Input:
+
+Table: rc_calls
++---------+---------------------+---------+
+| user_id | date                | call_id |
++---------+---------------------+---------+
+| 1218    | 2020-04-19 01:06:46 | 0       |
+| 1554    | 2020-03-01 16:51:01 | 1       |
+| 1857    | 2020-03-29 07:06:13 | 2       |
+| 1525    | 2020-03-07 02:01:12 | 3       |
++---------+---------------------+---------+
+
+Sample Output:
++---------+
+| user_id |
++---------+
+| 1554    |
++---------+
+
+Explanation:
+
+This identifies users who have an "inactive" status and belong to company ID 1. The result includes only those user IDs that meet both conditions.
+
+Query10:
+select user_id from rc_users
+where status = 'inactive' and company_id = 1;
