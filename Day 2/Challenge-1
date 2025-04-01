@@ -1,0 +1,146 @@
+***  Problem no: 1 ***
+
+SQL- Highest Matches Played - MySQL
+
+Retrieve the top 3 players with the highest number of matches played.
+Order the output in the descending order of matches played.
+
+Tables Schema as Below:
+
+CricketPlayer
+columnName	dataType
+player_id	INTEGER
+player_name	TEXT
+country	TEXT
+batting_style	TEXT
+bowling_style	TEXT
+matches_played	INTEGER
+runs_scored	INTEGER
+wickets_taken	INTEGER
+batting_average	DECIMAL(5, 2)
+bowling_average	DECIMAL(5, 2)
+Team
+columnName	dataType
+team_id	INTEGER
+team_name	TEXT
+country	TEXT
+coach	TEXT
+captain	TEXT
+player_id	INTEGER
+Output
+Note: The sample output is not the actual output.
+Example
+
+Sample Input:
+Table: CricketPlayer
++-----------+--------------------+---------------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+| player_id |    player_name     |    country    | batting_style | bowling_style| matches_played | runs_scored | wickets_taken | batting_average| bowling_average|
++-----------+--------------------+---------------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+|     2     |   Steve Smith      |  Australia    |  Right-hand   | Right-arm    |      210       |    7500     |      8        |      48.00     |     45.00      |
+|     3     | Kane Williamson    | New Zealand   |  Right-hand   | Right-arm    |      180       |    6500     |     15        |      45.00     |     35.00      |
+|     4     |     Joe Root       |   England     |  Right-hand   | Right-arm    |      220       |    9000     |     12        |      55.00     |     40.00      |
+|     6     |   David Warner     |  Australia    |   Left-hand   | Right-arm    |      190       |    7000     |      5        |      45.00     |     80.00      |
+|     8     | Quinton de Kock    | South Africa  |   Left-hand   | Right-arm    |      140       |    4500     |      0        |      35.00     |      NULL      |
+|     1     |  Virat Kohli       |    India      |  Right-hand   | Right-arm    |      250       |   12000     |     10        |      50.00     |     50.00      |
+|    10     |  Faf du Plessis    | South Africa  |  Right-hand   | Right-arm    |      160       |    5500     |      NULL     |      40.00     |      NULL      |
++-----------+--------------------+---------------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+
+Sample Output:
+
++-----------+----------------+-----------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+| player_id |  player_name   | country   | batting_style | bowling_style| matches_played | runs_scored | wickets_taken | batting_average| bowling_average|
++-----------+----------------+-----------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+|     1     |  Virat Kohli   |  India    | Right-hand    | Right-arm    |      250       |   12000     |     10        |     50.00      |      50.00     |
+|     4     |  Joe Root      | England   | Right-hand    | Right-arm    |      220       |    9000     |     12        |     55.00      |      40.00     |
+|     2     |  Steve Smith   | Australia | Right-hand    | Right-arm    |      210       |    7500     |      8        |     48.00      |      45.00     |
++-----------+----------------+-----------+---------------+--------------+----------------+-------------+---------------+----------------+----------------+
+
+Explanation:
+
+- The output shows the top 3 players sorted by `matches_played` in descending order.
+- Virat Kohli, Joe Root, and Steve Smith have the highest match counts 
+  and are listed in that order.
+
+
+Query1:
+select * from CricketPlayer
+where matches_played > 3
+order by matches_played desc
+limit 3;
+
+
+*** Problem no: 2 ***
+
+SQL- Got a grade
+
+You are working with a database of student records, and you are given a table named student_grades with the following columns:
+​​​​student_id (integer): A unique identifier for each student.
+course_id (integer): The ID of the course for which the student received a grade.
+grade (char): The grade received by the student, which can be one of the following: 'A', 'B', 'C', 'D', or 'F'.
+Write an SQL query to find a list of unique course IDs where at least one student has received a grade.
+
+Tables Schema as Below:
+
+student_grades
+columnName	dataType
+student_id	INT
+course_id	INT
+grade	CHAR(1)
+
+Query2:
+select distinct course_id from student_grades;
+
+
+
+*** Problem no: 3 ***
+
+SQL - Chocolate Problem SELECT - MySQL
+
+Write a query to retrieve all fields from the profiles table. The query should include the columns for username, full_name, and the headline field renamed as "achievements" in the output.
+Tables Schema as Below:
+profile
+columnName	dataType
+username	VARCHAR (24)
+full_name	VARCHAR (72)
+headline	VARCHAR (72)
+
+Order the output in increasing order of username and only retrieve the top 2 entries.
+Output
+The columns to be returned is/are: username, full_name, achievements
+Example
+
+Sample Input:
+
+Table: profile
++-------------------------+------------------------+---------------------------------------------+
+| username                | full_name              | headline                                   |
++-------------------------+------------------------+---------------------------------------------+
+| newton                  | Isaac Newton           | You don't understand gravity my boy        |
+| dheeraj-etta-77a61714a   | Dheeraj Etta           | NULL                                        |
+| dilendra                 | Dilendra Pant          | SDE at FNP | Full Stack(Java and JS Frameworks)|
++-------------------------+------------------------+---------------------------------------------+
+
+Sample Output:
+
++-------------------------+------------------------+---------------------------------------------+
+| username                | full_name              | achievements                               |
++-------------------------+------------------------+---------------------------------------------+
+| dheeraj-etta-77a61714a   | Dheeraj Etta           | NULL                                        |
+| dilendra                 | Dilendra Pant          | SDE at FNP | Full Stack(Java and JS Frameworks)|
++-------------------------+------------------------+---------------------------------------------+
+
+Explanation of the Sample Output:
+
+- The output shows the top 2 records ordered by username.
+- "Dheeraj Etta" has no achievements listed, so the value is NULL.
+- "Dilendra Pant" has a description of their role as a full-stack developer.
+
+
+Query3:
+select username,full_name,headline as achievements from profile
+order by username 
+limit 2;
+
+
+
+
